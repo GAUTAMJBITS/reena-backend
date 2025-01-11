@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: 'https://reena-photography-and-videog.onrender.com' })); // Allow requests from your frontend URL
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -61,7 +61,7 @@ app.post('/backend', async (req, res) => {
         await transporter.sendMail(confirmationMailOptions);
 
         // Redirect to the thank-you page in the frontend directory
-        res.redirect('/thank-you');  // Redirect to the /thank-you route
+        res.redirect('/thank-you'); // Redirect to the /thank-you route
 
     } catch (error) {
         console.error('Error sending email:', error);
@@ -82,7 +82,6 @@ app.get('/thank-you', (req, res) => {
 
 // Serve the index.html from the frontend folder
 app.get('/index', (req, res) => {
-    // Using path.join to get the absolute path of index.html
     const indexPath = path.join(__dirname, '..', 'frontend', 'index.html');
     res.sendFile(indexPath, (err) => {
         if (err) {
@@ -91,7 +90,6 @@ app.get('/index', (req, res) => {
         }
     });
 });
-
 
 // Start the server
 const PORT = process.env.PORT || 5500;
