@@ -7,12 +7,12 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'https://reena-frontend.onrender.com' })); // Replace with your deployed frontend URL
+app.use(cors({ origin: 'https://reena-photography-and-videog.onrender.com' })); // Replace with your deployed frontend URL
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route to handle contact form submission
-app.post('/backend', async (req, res) => {
+app.post('/', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     try {
