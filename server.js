@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route to handle contact form submission
-app.post('/', async (req, res) => {
+app.post('/backend', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     try {
